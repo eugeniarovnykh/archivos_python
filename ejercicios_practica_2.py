@@ -27,7 +27,14 @@ def ej3():
     # para cumplir con el enunciado del ejercicio
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
-    
+    csvfile = open (archivo, 'r')
+    data = list(csv.DictReader(csvfile))
+    csvfile.close()
+    total = 0
+    for v in data:
+        total += int(v['tornillos'])
+    print('total de tornillos en stock:',total)
+
 
 
 def ej4():
@@ -47,6 +54,23 @@ def ej4():
     # utilizando "try except", tema que se verá la clase que viene.
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
+    csvfile = open (archivo, 'r')
+    data = list(csv.DictReader(csvfile))
+    csvfile.close()
+    depto_2 = 0
+    depto_3 = 0
+  
+    for propiedad in data:
+        try: 
+            if propiedad['ambientes'] == '2':
+                depto_2 += 1
+            elif propiedad['ambientes'] == '3':
+                depto_3 += 1
+        except: print('propiedad no tiene detallado la cantidad de ambientes')
+    print ('Total de propiedades con dos ambientes:',depto_2)
+    print ('Total de propiedades con tres ambientes:',depto_3)
+
+
 
 
 if __name__ == '__main__':
